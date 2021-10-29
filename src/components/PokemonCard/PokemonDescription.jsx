@@ -1,8 +1,14 @@
 import React from 'react';
-
 const PokemonDescription = ({pokemon}) => {
     return (
         <div>
+            <div className='Pokemon-img'>
+                <img src={pokemon.sprites.front_default} alt="pokemon"/>
+            </div>
+            <p className='Pokemon-Name'>
+                {pokemon.name}
+            </p>
+
 
             <div className='Pokemon-Card-types'>
                 {pokemon.types.map((type, i) => {

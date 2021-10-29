@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {getAllPokemon, getPokemon} from "../utils/pokemon";
 import PokemonCard from "./PokemonCard/PokemonCard";
-
+import {Button} from "antd";
 const AllPokemonPage = () => {
 
     const [loading, setLoading] = useState(true)
@@ -17,9 +17,7 @@ const AllPokemonPage = () => {
             setNextUrl(response.next);
             setPrevUrl(response.previous);
             setLoading(false);
-            console.log(response)
             let pokemon = await loadingPokemon(response.results)
-            console.log(pokemon)
         }
 
         fetchData();
@@ -35,7 +33,7 @@ const AllPokemonPage = () => {
     }
 
     const prev = async () => {
-        if(!prevUrl) return;
+        if (!prevUrl) return;
         setLoading(true);
         let data = await getAllPokemon(prevUrl)
         await loadingPokemon(data.results)
@@ -45,39 +43,40 @@ const AllPokemonPage = () => {
     }
 
 
-
     const loadingPokemon = async (data) => {
         let _pokemonData = await Promise.all(data.map(async pokemon => {
-            let pokemonRecord = await getPokemon(pokemon.url);
-            return pokemonRecord
-        }))
+            return await getPokemon(pokemon.url);
 
+        }))
         setPokemonData(_pokemonData)
     }
 
-    console.log(pokemonData)
     return (
-        <div>
+        <div className='main-page-wrapper'>
             {loading
                 ? <h3>Loading...</h3>
                 : (
                     <>
-                    <div>
-                        <button onClick={prev}>Prev</button>
-                        <button onClick={next}>Next</button>
-                    </div>
-                    <div>
-                        {pokemonData.map((pokemon, i) => {
-                            return <PokemonCard
-                                pokemon={pokemon}
-                                key={i}
-                            />
-                        })}
-                    </div>
                         <div>
-                            <button onClick={prev}>Prev</button>
-                            <button onClick={next}>Next</button>
+                            <Button
+                                className='btn'
+                                onClick={prev}
+                                type="primary">Prev</Button>
+                            <Button
+                                className='btn'
+                                onClick={next}
+                                type="primary">Next</Button>
+
                         </div>
+                        <div className='all-pokemon-block'>
+                            {pokemonData.map((pokemon, i) => {
+                                return <PokemonCard
+                                    pokemon={pokemon}
+                                    key={i}
+                                />
+                            })}
+                        </div>
+
                     </>
                 )
             }
