@@ -1,9 +1,10 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {PATH} from "../../utils/Routes";
 
 
 const PokemonCard = ({pokemon}) => {
+
     return (
         <div className='pokemon-wrapper'>
 
@@ -11,7 +12,13 @@ const PokemonCard = ({pokemon}) => {
                 <img src={pokemon.sprites.front_default} alt="pokemon"/>
             </div>
             <p className='Pokemon-name'>
-                <NavLink to={PATH.POKEMON_DESCRIPTION +`${pokemon.name}`}>{pokemon.name}</NavLink>
+
+                <Link to={{
+                    pathname: `${PATH.POKEMON_DESCRIPTION}${pokemon.name}`,
+                    state: {
+                        pokemon
+                    }
+                }}>{pokemon.name}</Link>
             </p>
 
         </div>

@@ -25,16 +25,76 @@
     background: #fffefe;
 
 }
-
+.navbarA{
+    background-color: rgba(255, 165, 0, 0.5);
+}
 .btn {
     margin: 5px;
 }
+.home-btn{
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 50px;
+    padding: 5px;
+    color: white;
+    width: 70px;
+    border-radius: 2px;
+    background-color: dodgerblue;
+}
 
-.Pokemon-img{
+.Pokemon-img {
     width: 150px;
 }
-.Pokemon-name a{
+
+.Pokemon-name a {
     color: #505050;
     font-size: 20px;
     font-weight: bold;
+}
+
+.Pokemon-description-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40%;
+    height: 30%;
+    margin: 10px auto;
+    border: 1px solid black;
+    background: #fffefe;
+}
+.Pokemon-name{
+    margin-top: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #505050;
+}
+
+.description-block{
+    flex-direction: column;
+}
+
+.Pokemon-Card-types{
+    display: flex;
+    flex-direction: row;
+}
+.Pokemon-type{
+    color: teal;
+    margin: 3px;
+    font-weight: bold;
+    border: teal 1px solid;
+    border-radius: 4px;
+    padding: 3px;
+}
+.info-block{
+    display: flex;
+    flex-direction: row;
+    color: teal;
+    font-weight: bold;
+}
+
+.info{
+    color: teal;
+    margin: 3px;
+    font-weight: bold;
+    padding: 3px;
 }

@@ -1,16 +1,21 @@
 import React from 'react';
 import 'antd/dist/antd.css'
 import {PageHeader} from "antd";
+import {Link} from "react-router-dom";
+import {PATH} from "../utils/Routes";
 
 const NavbarPage = () => {
     return (
-        <PageHeader
+        <div>
+            <PageHeader
+                title="Pokedex"
+                subTitle="https://pokeapi.co/."
+                extra={<Link className='home-btn'
+                             to={PATH.ALL_POKEMON_PAGE}>
+                    Home</Link>}
+            />
 
-            color="primary"
-            className="site-page-header navbar"
-            title="Pokedex"
-            subTitle="https://pokeapi.co/."
-        />
+        </div>
     );
 };
 
