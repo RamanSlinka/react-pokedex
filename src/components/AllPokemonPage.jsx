@@ -17,7 +17,7 @@ const AllPokemonPage = () => {
             setNextUrl(response.next);
             setPrevUrl(response.previous);
             setLoading(false);
-            let pokemon = await loadingPokemon(response.results)
+             await loadingPokemon(response.results)
         }
 
         fetchData();
